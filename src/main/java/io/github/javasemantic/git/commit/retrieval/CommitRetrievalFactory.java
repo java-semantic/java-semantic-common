@@ -1,4 +1,4 @@
-package io.github.javasemantic.commit.retrieval;
+package io.github.javasemantic.git.commit.retrieval;
 
 import java.util.function.Supplier;
 import lombok.AccessLevel;

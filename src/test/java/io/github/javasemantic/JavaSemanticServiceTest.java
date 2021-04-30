@@ -6,7 +6,7 @@ import static org.mockito.Mockito.when;
 
 import io.github.javasemantic.commit.engine.CommitEngine;
 import io.github.javasemantic.commit.engine.CommitEngineFactory;
-import io.github.javasemantic.commit.retrieval.CommitRetrieval;
+import io.github.javasemantic.git.commit.retrieval.CommitRetrieval;
 import io.github.javasemantic.degenerator.Degenerator;
 import io.github.javasemantic.degenerator.DegeneratorFactory;
 import io.github.javasemantic.domain.model.Commit;

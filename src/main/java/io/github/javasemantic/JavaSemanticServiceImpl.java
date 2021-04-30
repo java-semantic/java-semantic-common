@@ -1,7 +1,7 @@
 package io.github.javasemantic;
 
 import io.github.javasemantic.commit.engine.CommitEngine;
-import io.github.javasemantic.commit.retrieval.CommitRetrieval;
+import io.github.javasemantic.git.commit.retrieval.CommitRetrieval;
 import io.github.javasemantic.degenerator.Degenerator;
 import io.github.javasemantic.domain.DomainFactory;
 import io.github.javasemantic.domain.model.Commit;

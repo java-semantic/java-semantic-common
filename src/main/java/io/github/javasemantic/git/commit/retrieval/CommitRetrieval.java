@@ -1,4 +1,4 @@
-package io.github.javasemantic.commit.retrieval;
+package io.github.javasemantic.git.commit.retrieval;
 
 import io.github.javasemantic.domain.model.DirtyCommit;
 import java.util.List;
