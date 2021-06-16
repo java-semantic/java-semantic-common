@@ -19,7 +19,7 @@ public class TypeConventionalRule extends ConventionalValidationRule {
     Optional<TypeRuleEnum> answer =
         Arrays.stream(TypeRuleEnum.values())
         .filter(type -> type.evaluate(commit.getCommitComponents()))
-        .findAny();
+        .findFirst();
 
     if (answer.isPresent()) {
       commit.setTypeEnum(answer.get().getTypeEnum());

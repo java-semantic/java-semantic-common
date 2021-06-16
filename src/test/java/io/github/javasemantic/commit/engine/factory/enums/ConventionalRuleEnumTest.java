@@ -78,7 +78,7 @@ public class ConventionalRuleEnumTest {
   void when_getBreaking_change_should_valid_for_exclamation() {
 
     //Given
-    var conventionalValidationRule = ConventionalRuleEnum.BREAKING_CHANGE_RULE.getConstructor()
+    var conventionalValidationRule = ConventionalRuleEnum.BREAKING_EXCLAMATION_RULE.getConstructor()
         .get();
     Commit commit = Commit.builder()
         .commitComponents(CommitComponents.builder().exclamation(true).build()).build();
@@ -94,16 +94,32 @@ public class ConventionalRuleEnumTest {
   void when_getBreaking_change_should_valid_for_body() {
 
     //Given
-    var conventionalValidationRule = ConventionalRuleEnum.BREAKING_CHANGE_RULE.getConstructor()
+    var conventionalValidationRule = ConventionalRuleEnum.BREAKING_BODY_RULE.getConstructor()
         .get();
     Commit commit = Commit.builder().commitComponents(CommitComponents.builder().body(
-        "We are making these changes because I can. BREAKING CHANGE for you!").build()).build();
+        List.of("We are making these changes because I can", " BREAKING CHANGE for you!")).build()).build();
 
     //When
     var actual = conventionalValidationRule.execute(commit);
 
     //Then
     assertTrue(actual.isAppliedOrValid());
+  }
+
+  @Test
+  void when_getBreaking_change_should_invalid_for_empty_body() {
+
+    //Given
+    var conventionalValidationRule = ConventionalRuleEnum.BREAKING_BODY_RULE.getConstructor()
+        .get();
+    Commit commit = Commit.builder().commitComponents(CommitComponents.builder().body(
+        List.of()).build()).build();
+
+    //When
+    var actual = conventionalValidationRule.execute(commit);
+
+    //Then
+    assertTrue(actual.isNotApplicable());
   }
 
 }
