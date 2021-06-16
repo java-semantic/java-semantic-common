@@ -9,6 +9,7 @@ import io.github.javasemantic.domain.model.DirtyCommit;
 import io.github.javasemantic.domain.model.common.Version;
 import io.github.javasemantic.version.manager.VersionManager;
 import lombok.RequiredArgsConstructor;
+import org.apache.log4j.BasicConfigurator;
 
 @RequiredArgsConstructor
 public class JavaSemanticServiceImpl implements JavaSemanticService {
@@ -18,7 +19,13 @@ public class JavaSemanticServiceImpl implements JavaSemanticService {
   private final VersionManager versionManager;
   private final CommitRetrieval commitRetrieval;
 
+  public void init() {
+    BasicConfigurator.configure();
+  }
+
   public Version execute() {
+    init();
+
     var projectData = DomainFactory.getProjectData();
 
     for (var dirtyCommit : commitRetrieval.getCommits()) {

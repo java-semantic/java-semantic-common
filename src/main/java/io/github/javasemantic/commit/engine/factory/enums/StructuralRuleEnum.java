@@ -16,6 +16,7 @@ public enum StructuralRuleEnum {
 
   TYPE_RULE(
       () -> new StructuralRule((commitComponent) -> Objects.nonNull(commitComponent) && Objects.nonNull(commitComponent.getType()))),
+
   BODY_RULE(
       () -> new OptionalStructuralRule(
           (commitComponent) ->  Objects.nonNull(commitComponent) && Objects.nonNull(commitComponent.getBody()))),
@@ -27,7 +28,6 @@ public enum StructuralRuleEnum {
       (commitComponent) ->  Objects.nonNull(commitComponent) && Objects.nonNull(commitComponent.getScope()))),
   SCOPE_RULE(() -> new StructuralRule(
       (commitComponent) -> commitComponent.getScope().matches("\\(.+\\)"))),
-
   OPTIONAL_EXCLAMATION_RULE(() -> new OptionalStructuralRule(
       CommitComponents::isExclamation)),
   EXCLAMATION_RULE(() -> new StructuralRule(CommitComponents::isExclamation));

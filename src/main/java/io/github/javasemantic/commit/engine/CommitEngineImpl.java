@@ -18,25 +18,19 @@ public class CommitEngineImpl extends BasicEngine<CommitPartRule, Commit> {
 
         RuleFactory
             .getCommitPartRule()
-            .setStructuralValidationRule(RuleFactory
-                .get(StructuralRuleEnum.TYPE_RULE)) // mandatory -> null = invalid otherwise valid
-            // further structural validation (no need for null check)
+            .setStructuralValidationRule(RuleFactory.get(StructuralRuleEnum.TYPE_RULE))
             .setConventionalValidationRule(RuleFactory.get(ConventionalRuleEnum.TYPE_RULE))
             .setVersionRule((RuleFactory.get(VersionRuleEnum.VERSION_RULE_ENUM))),
 
-        //Does multiple Breaking change rules mean multiple major changes?
         RuleFactory
             .getCommitPartRule()
-            .setStructuralValidationRule(RuleFactory.get(StructuralRuleEnum.OPTIONAL_EXCLAMATION_RULE)
-                .addChild(RuleFactory.get(StructuralRuleEnum.EXCLAMATION_RULE)))
-            .setConventionalValidationRule(
-                RuleFactory.get(ConventionalRuleEnum.BREAKING_CHANGE_RULE))
+            .setStructuralValidationRule(RuleFactory.get(StructuralRuleEnum.OPTIONAL_EXCLAMATION_RULE))
+            .setConventionalValidationRule(RuleFactory.get(ConventionalRuleEnum.BREAKING_EXCLAMATION_RULE))
             .setVersionRule((RuleFactory.get(VersionRuleEnum.BREAKING_CHANGE_RULE))),
 
         RuleFactory
             .getCommitPartRule()
-            .setStructuralValidationRule(RuleFactory.get(StructuralRuleEnum.OPTIONAL_SCOPE_RULE)
-                .addChild(RuleFactory.get(StructuralRuleEnum.SCOPE_RULE))),
+            .setStructuralValidationRule(RuleFactory.get(StructuralRuleEnum.OPTIONAL_SCOPE_RULE)),
 
         RuleFactory
             .getCommitPartRule()
@@ -46,12 +40,10 @@ public class CommitEngineImpl extends BasicEngine<CommitPartRule, Commit> {
             .getCommitPartRule()
             .setStructuralValidationRule(RuleFactory.get(StructuralRuleEnum.DESCRIPTION_RULE)),
 
-        //Does multiple Breaking change rules mean multiple major changes?
         RuleFactory
             .getCommitPartRule()
             .setStructuralValidationRule(RuleFactory.get(StructuralRuleEnum.BODY_RULE))
-            .setConventionalValidationRule(
-                RuleFactory.get(ConventionalRuleEnum.BREAKING_CHANGE_RULE))
+            .setConventionalValidationRule(RuleFactory.get(ConventionalRuleEnum.BREAKING_BODY_RULE))
             .setVersionRule((RuleFactory.get(VersionRuleEnum.BREAKING_CHANGE_RULE)))
     );
   }

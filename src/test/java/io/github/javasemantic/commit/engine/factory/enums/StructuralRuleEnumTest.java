@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @ExtendWith(MockitoExtension.class)
@@ -66,7 +68,7 @@ public class StructuralRuleEnumTest {
     var structuralValidationRule = StructuralRuleEnum.BODY_RULE.getConstructor().get();
     Commit commit = Commit.builder().commitComponents(CommitComponents
         .builder()
-        .body("Pig are going to fly one day")
+        .body(List.of("Pig are going to fly one day"))
         .build()).build();
 
     //When
